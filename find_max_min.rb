@@ -1,23 +1,18 @@
-# 問題: 配列の中の最大値と最小値を返す
-#
-# ある整数の配列が与えられたとき、その配列の中で最大の整数と最小の整数を返す関数 `find_max_min` をRubyで実装してください。
-#
-# 入力: 
-# - 整数の配列 `arr` (1 <= arr.length <= 10^5, -10^4 <= arr[i] <= 10^4)
-#
-# 出力:
-# - 配列 `arr` の中の最大値と最小値を含む配列。形式: `[最小値, 最大値]`
-#
-# 例:
-# find_max_min([1, 2, 3, 4, 5]) => [1, 5]
-# find_max_min([-1, -2, -3, -4, -5]) => [-5, -1]
-# find_max_min([100, 2, 55, -10, 28]) => [-10, 100]
+require 'net/http'
+require 'json'
 
-def find_max_min(arr)
-  return [arr.min, arr.max]
-end
+# APIエンドポイントのURIをセット
+uri = URI('https://www.jma.go.jp/bosai/forecast/data/overview_forecast/130000.json')
 
-# テストケース
-puts find_max_min([1, 2, 3, 4, 5])  # [1, 5]
-puts find_max_min([-1, -2, -3, -4, -5])  # [-5, -1]
-puts find_max_min([100, 2, 55, -10, 28])  # [-10, 100]
+# HTTPリクエストを実行してレスポンスを取得
+response = Net::HTTP.get(uri)
+
+# JSON形式のレスポンスをRubyのハッシュに変換
+data = JSON.parse(response)
+
+# コンソールに必要な情報を出力
+puts "発表者: #{data['publishingOffice']}"
+puts "報告日時: #{data['reportDatetime']}"
+puts "対象地域: #{data['targetArea']}"
+puts "ヘッドライン: #{data['headlineText']}"
+puts "詳細: #{data['text']}"
