@@ -10,7 +10,7 @@ def max_subarray_sum(nums)
   max_sum
 end
   
-# テストケース
+# テスト
 input = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 puts max_subarray_sum(input)
   
