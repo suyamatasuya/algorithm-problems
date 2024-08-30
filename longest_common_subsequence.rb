@@ -20,5 +20,5 @@ end
   
 str1 = "ABCBDAB"
 str2 = "BDCAB"
-puts longest_common_subsequence(str1, str2)  # => 4
+puts longest_common_subsequence(str1, str2)
   
