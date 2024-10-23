@@ -1,7 +1,17 @@
 def remove_duplicates(array)
-  array.uniq
+  unique_elements = {}  # ハッシュを使って、重複を記録する
+  result = []
+
+  array.each do |element|
+    unless unique_elements[element]
+      unique_elements[element] = true
+      result << element
+    end
 end
-  
-original_array = [1, 2, 2, 3, 4, 4, 4]
-puts remove_duplicates(original_array)
-  
+
+  result
+end
+
+# 使用例
+array = [1, 2, 2, 3, 4, 4, 5]
+puts remove_duplicates(array).inspect  # => [1, 2, 3, 4, 5]
