@@ -11,5 +11,3 @@ class Piyo < hoge
     super
   end
 end
-
-puts Piyo.new.message
